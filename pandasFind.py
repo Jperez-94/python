@@ -16,17 +16,15 @@ import sys
 #################################################
 
 
-print("File name:")
 
 # @name_in   ----> Nombre del fichero con los datos
 # (we add csv or xlsx depending on the type of file we want to read from)
-name_in = input()
+name_in = input('File name:\n')
 name_in += ".csv"
 #name_in += ".xlsx"
 
 # @key -> Word the script has to look for
-print("Key word:")
-key = input()
+key = input('Key word:\n')
 
 ## Check the path file exist
 try:

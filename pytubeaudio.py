@@ -15,26 +15,34 @@ import os
 #########################################
 
 
-print("URL of the original youtube video:")
-url = input()
+# Modify the path of the folder where the files are downloaded
+try:
+    path = r"C:\Users\user\Downloads"
+    if (os.path.isdir(path) == False):
+        raise Exception()
+except:
+    print('ERROR: You have to introduce a valid folder path', sys.exc_info())
+    sys.exit()
+
+
+url = input('URL of the original youtube video:\n')
 
 print("\nSearching...\n")
 
-# Modify the path where the files are downloaded
-path = r"C:\Users\user\Downloads"
 
 try:
     audio = pytube.YouTube(url).streams.filter(only_audio=True).first()
 except:
-    print("Se ha producido un error durante la busqueda:\n", sys.exc_info())
+    print("ERROR: The download was cancelled:\n", sys.exc_info())
+    sys.exit()
 else:
     print("Downloading...\n")
     try:
         audio.download(path)
     except:
-        print("No pudo completarse la descarga:\n", sys.exc_info(), "\n")
+        print("ERROR: The download was cancelled:\n", sys.exc_info(), "\n")
+        sys.exit()
     else:
         print("Done\n")
 
-print("Press ENTER to exit...")
-input()
+input('Press ENTER to exit...')

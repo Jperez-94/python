@@ -7,6 +7,7 @@
 
 import pytube
 import sys
+import os
 
 
 ########################################
@@ -17,18 +18,25 @@ import sys
 ########################################
 
 
-print("URL of the original youtube video:")
-url = input()
+# Modify the path of the folder where the files are downloaded
+try:
+    path = r"C:\Users\user\Downloads"
+    if (os.path.isdir(path) == False):
+        raise Exception()
+except:
+    print('ERROR: You have to introduce a valid folder path', sys.exc_info())
+    sys.exit()
+
+
+url = input('URL of the original youtube video:\n')
 
 print("\nSearching...\n")
-
-# Modify the path where the files are downloaded
-path = r"C:\Users\user\Downloads"
 
 try:
     youtube = pytube.YouTube(url)
 except:
     print("ERROR: There is a problem with the video URL\n", sys.exc_info())
+    sys.exit()
 else:
     # List of the available formats
     streams = youtube.streams.all()
@@ -40,13 +48,11 @@ else:
     print("======================================\n")
 
     # Look at the itag of each item in the list and the associated format
-    print("Choose the \"itag\" of the format you want to download:")
-    itag = input()
+    itag = input('Choose the \"itag\" of the format you want to download:\n')
     print("\nDownloading...\n")
     video = youtube.streams.get_by_itag(int(itag))
     video.download(path)
 
     print("\nDone")
 
-    print("\nPress ENTER to exit...")
-    input()
+    input('\nPress ENTER to exit...')

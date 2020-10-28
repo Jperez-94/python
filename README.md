@@ -12,3 +12,4 @@
 5. pytubebasic.py: Initial script using the pytube libary. It shows all the attributes that contains a video that is going to be download.
 6. pytubeaudio.py: Shows how to download only the audio of a video from youtube.
 7. pytubelist.py: Download a playlist from youtube. It shows the progress of the download with a progressbar.
+8. encryptor1.py: Simple functions to encrypt or desencrypt any password following an especific key.

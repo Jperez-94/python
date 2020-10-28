@@ -18,16 +18,25 @@ import progressbar
 # format
 ########################################
 
-print("URL of the original youtube video:")
-url = input()
+
+# Modify the path of the folder where the files are downloaded
+try:
+    path = r"C:\Users\user\Downloads"
+    if (os.path.isdir(path) == False):
+        raise Exception()
+except:
+    print('ERROR: You have to introduce a valid folder path', sys.exc_info())
+    sys.exit()
+
+
+url = input('URL of the original youtube video:\n')
 
 # Choose the format it is going to be downloaded
-print("\nDownload audio or video:")
-elem_type = input()
+elem_type = input('\nDownload audio or video:\n')
+
+
 print("\nSearching...\n")
 
-# Modify the path where the files are downloaded
-path = r"C:\Users\user\Downloads"
 
 try:
     playlist = pytube.Playlist(url)
@@ -35,6 +44,7 @@ try:
     playlist._video_regex = re.compile(r"\"url\":\"(/watch\?v=[\w-]*)")
 except:
     print("ERROR: An error has ocurred:\n", sys.exc_info())
+    sys.exit()
 else:
     print("Downloading...\n")
     try:
@@ -57,6 +67,6 @@ else:
                 print("\nIt hasn`t been able to download the video " + elem.title + "\n")
     except:
         print("\nThe download couldn't end:\n", sys.exc_info(), "\n")
+        sys.exit()
 
-print("\nPress ENTER to exit...")
-input()
+input('\nPress ENTER to exit...')

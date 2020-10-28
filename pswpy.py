@@ -44,13 +44,12 @@ def show(psw):
 	print("##################################\n\n\n")
 	print("<<<<  " + str(psw) + "  >>>>")
 
-print("Password characters's number:")
-length = input()
+length = input('Password characters\'s number:\n')
 
 try:
 	length = int(length)
 except:
-	print("\nThe number of characters requiered is unavailable")
+	print("\nThe number of characters requiered is invalid")
 else:
 	psw = generatePws(length)
 	show(psw)
