@@ -4,6 +4,19 @@
 ##########################
 
 
+def getKey_encrypt(pre):
+    key = pre + 2
+    
+    return key
+
+def getKey_desencrypt(pre):
+    key = pre - 2
+
+    return int(key)
+
+
+
+
 ############################################################
 # Takes the equivalent of each character in the ASCII table
 # and add 2 to its value. Finally it reverts the number to
@@ -16,8 +29,7 @@ def encrypt(original):
     encrypted = ''
 
     for i in range(len(original)):
-        pre = ord(original[i])
-        key = pre + 2
+        key = getKey_encrypt(ord(original[i]))
         encrypted += chr(key)
 
     print("\n#############################")
@@ -40,8 +52,7 @@ def desencrypt(original):
     desencrypted = ''
 
     for i in range(len(original)):
-        pre = ord(original[i])
-        key = pre - 2
+        key = getKey_desencrypt(ord(original[i]))
         desencrypted += chr(key)
     
     print("\n################################")
