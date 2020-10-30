@@ -37,6 +37,14 @@ import sys
 ```
 Extension of the script pandasOpen.py. It finds the especific key and replace it with a new one giving a new file with the changes as output. The original file doesn't change.
 
+## pandarPairOdd.py
+```
+import pandas
+import os.path
+import sys
+```
+Extension of the script pandasOpen.py. It counts how many pair and odd numbers are in a datafile with CSV format
+
 ## pytubebasic.py
 ```
 import pytube
