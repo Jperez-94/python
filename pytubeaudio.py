@@ -17,7 +17,7 @@ import os
 
 # Modify the path of the folder where the files are downloaded
 try:
-    path = r"C:\Users\user\Downloads"
+    path = r"C:\Users\user\Desktop"
     if (os.path.isdir(path) == False):
         raise Exception()
 except:
